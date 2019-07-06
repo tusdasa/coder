@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!--  -->
+	<jpql name="ArticleCategoryDao.deleteByPrimaryKey">
+		<sql>DELETE FROM ArticleCategory category WHERE category.acid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleCategoryDao.selectByPrimaryKey">
+		<sql>SELECT category FROM ArticleCategory category WHERE category.acid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleCategoryDao.updateByPrimaryKey">
+		<sql>UPDATE ArticleCategory category SET category.acname=?1 WHERE category.acid=?2</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleCategoryDao.findAll">
+		<sql>SELECT category FROM ArticleCategory category</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleCategoryDao.count">
+		<sql>SELECT COUNT(category.acid) FROM ArticleCategory category</sql>
+	</jpql>
+	<jpql name="ArticleCategoryDao.countByCategory">
+		<sql>SELECT COUNT(article.aid) FROM Article article WHERE article.category.acid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.deleteByPrimaryKey">
+		<sql>DELETE FROM Article article WHERE article.aid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.selectByPrimaryKey">
+		<sql>SELECT article FROM Article article WHERE article.aid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.updateByPrimaryKey">
+		<sql>UPDATE Article article SET article.title=?1,article.date=?2,article.content=?3,article.category.acid=?4 WHERE article.aid=?5</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.findAll">
+		<sql>SELECT article FROM Article article ORDER BY article.date DESC</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.findAllS">
+		<sql>SELECT article FROM Article article ORDER BY article.date DESC</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.findAllByPage">
+		<sql>SELECT article FROM Article article ORDER BY article.date DESC</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.findAllByPageByKeyWord">
+		<sql>SELECT article FROM Article article WHERE article.title LIKE CONCAT('%',?1,'%') ORDER BY article.date DESC </sql>
+	</jpql>
+	<!-- -->
+	<jpql name="ArticleDao.findAllByPageByUser">
+		<sql>SELECT article FROM Article article WHERE article.author.uid = ?1 ORDER BY article.date DESC </sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.count">
+		<sql>SELECT COUNT(article.aid) FROM Article article</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.countByUser">
+		<sql>SELECT COUNT(article.aid) FROM Article article WHERE article.author.uid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.findAllPageNoContent">
+		<sql>SELECT article.aid,article.title,article.date,article.author.username,article.category.acname,article.tags FROM Article article ORDER BY article.date DESC</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.updateCategory">
+		<sql>UPDATE Article article SET article.category.acid=?1 WHERE article.aid=?2</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.updateContent">
+		<sql>UPDATE Article article SET article.content=?1,article.date=?2 WHERE article.aid=?3</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.updateTags">
+		<sql>UPDATE Article article SET article.tags=?1 WHERE article.aid=?2</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="ArticleDao.updateTitle">
+		<sql>UPDATE Article article SET article.title=?1 WHERE article.aid=?2</sql>
+	</jpql>
+	<!--   -->
+	<jpql name="ArticleDao.findAllByCategory">
+		<sql>SELECT article FROM Article article WHERE article.category.acid=?1 ORDER BY article.date DESC</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="TagsDao.deleteByPrimaryKey">
+		<sql>DELETE FROM Tags tag WHERE tag.tid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="TagsDao.selectByPrimaryKey">
+		<sql>SELECT tag FROM Tags tag WHERE tag.tid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="TagsDao.findAll">
+		<sql>SELECT tag FROM Tags tag</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="TagsDao.updateByPrimaryKey">
+		<sql>UPDATE Tags tag SET tag.content=?1 WHERE tag.tid=?2</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.selectByPrimaryKey">
+		<sql>SELECT user FROM User user WHERE user.uid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.findAll">
+		<sql>SELECT user FROM User user</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.findUserByUsername">
+		<sql>SELECT user FROM User user WHERE user.username=?1 AND user.password=?2</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.findUserByEmail">
+		<sql>SELECT user FROM User user WHERE user.email=?1 AND user.password=?2</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.findUserByPhone">
+		<sql>SELECT user FROM User user WHERE user.number=?1 AND user.password=?2</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.disable">
+		<sql>UPDATE User user SET user.status=0 WHERE user.uid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.enable">
+		<sql>UPDATE User user SET user.status=1 WHERE user.uid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.checkUsername">
+		<sql>SELECT user.uid,user.username,user.email,user.number,user.password,user.status FROM User user WHERE user.username=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.checkEmail">
+		<sql>SELECT user.uid,user.username,user.email,user.number,user.password,user.status FROM User user WHERE user.email=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.checkPhone">
+		<sql>SELECT user.uid,user.username,user.email,user.number,user.password,user.status FROM User user WHERE user.number=?1</sql>
+	</jpql>
+	<!---->
+	<jpql name="TagsDao.tagFindArticle">
+		<sql>SELECT article FROM Article article inner join fetch article.tags tag where tag.tid=?1</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="PermissionDao.findAll">
+		<sql>SELECT permission FROM Permission permission</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.updateUserPerminssion">
+		<sql>UPDATE User user SET user.permission.pid=?1 WHERE user.uid=?2</sql>
+	</jpql>
+	<!--  -->
+	<jpql name="UserDao.updateUserPassword">
+		<sql>UPDATE User user SET user.password=?1 WHERE user.uid=?2</sql>
+	</jpql>
+	<!-- findAllPageNoContentByPage(String key, Page page) -->
+	<jpql name="ArticleDao.findKeyNoContentByPage">
+		<sql>SELECT article FROM Article article WHERE article.title LIKE CONCAT('%',?1,'%') ORDER BY article.date DESC</sql>
+	</jpql>
+	<jpql name="ArticleDao.countByKey">
+		<sql>SELECT COUNT(article.aid) FROM Article article WHERE article.title LIKE CONCAT('%',?1,'%')</sql>
+	</jpql>
+	<jpql name="AddressDao.deleteByPrimaryKey">
+		<sql>DELETE FROM Address address WHERE address.did=?1</sql>
+	</jpql>
+	<jpql name="AddressDao.updateByPrimaryKey">
+		<sql>UPDATE Address address SET address.address=?1,address.title=?2 WHERE address.did=?3</sql>
+	</jpql>
+	<jpql name="AddressDao.findAll">
+		<sql>SELECT address FROM Address address</sql>
+	</jpql>
+	<jpql name="">
+		<sql></sql>
+	</jpql>
+</config>

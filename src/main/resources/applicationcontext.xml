@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<!-- /WEB-INF/classes/ -->
+	<!-- <context:property-placeholder location="classpath:jdbc.properties" /> -->
+
+	<bean id="entityManagerUtils" class="net.zhulan.coder.utils.EntityManagerUtils"></bean>
+	<bean id="jPQLUtils" class="net.zhulan.coder.utils.JPQLUtils"></bean>
+	<bean id="articleCategoryDao"
+		class="net.zhulan.coder.dao.implement.ArticleCategoryDaoImpl">
+		<property name="entityManagerUtils" ref="entityManagerUtils"/>
+		<property name="jPQLUtils" ref="jPQLUtils"/>
+	</bean>
+	<bean id="articleDao"
+		class="net.zhulan.coder.dao.implement.ArticleDaoImpl">
+		<property name="entityManagerUtils" ref="entityManagerUtils"/>
+		<property name="jPQLUtils" ref="jPQLUtils" />
+	</bean>
+	<bean id="tagsDao"
+		class="net.zhulan.coder.dao.implement.TagsDaoImpl">
+		<property name="entityManagerUtils" ref="entityManagerUtils"/>
+		<property name="jPQLUtils" ref="jPQLUtils"/>
+	</bean>
+	<bean id="permissionDao"
+		class="net.zhulan.coder.dao.implement.PermissionDaoImp">
+		<property name="entityManagerUtils" ref="entityManagerUtils"/>
+		<property name="jPQLUtils" ref="jPQLUtils"/>
+	</bean>
+	<bean id="userDao"
+		class="net.zhulan.coder.dao.implement.UserDaoImpl">
+		<property name="entityManagerUtils" ref="entityManagerUtils"/>
+		<property name="jPQLUtils" ref="jPQLUtils"/>
+	</bean>
+	<bean id="addressDao" class="net.zhulan.coder.dao.implement.AddressDaoImpl">
+		<property name="entityManagerUtils" ref="entityManagerUtils"/>
+		<property name="jPQLUtils" ref="jPQLUtils"/>
+	</bean>
+	
+	<bean id="cacheDao" class="net.zhulan.coder.dao.implement.CacheDaoImpl"></bean>
+	<context:component-scan base-package="net.zhulan.coder.service" >
+	</context:component-scan>
+</beans>

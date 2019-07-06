@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<persistence-unit name="code"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>net.zhulan.coder.entity.Article</class>
+		<class>net.zhulan.coder.entity.ArticleCategory</class>
+		<class>net.zhulan.coder.entity.User</class>
+		<class>net.zhulan.coder.entity.Tags</class>
+		<class>net.zhulan.coder.entity.Permission</class>
+		<class>net.zhulan.coder.entity.Comment</class>
+		<class>net.zhulan.coder.entity.Address</class>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" /> 
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/book?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false" /> 
+			<property name="javax.persistence.jdbc.user" value="root" /> 
+			<property name="javax.persistence.jdbc.password" value="root" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.dialect.storage_engine"
+				value="innodb" />
+			<property name="hibernate.connection.provider_class" value="org.hibernate.c3p0.internal.C3P0ConnectionProvider"/> 
+			<property name="hibernate.c3p0.min_size" value="10" />
+			<property name="hibernate.c3p0.max_size" value="20" />
+			<property name="hibernate.c3p0.timeout" value="120" />
+			<property name="hibernate.c3p0.initialPoolSize" value="10" />
+			<property name="hibernate.connection.autocommit"
+				value="false" />
+			<property name="hibernate.cache.use_second_level_cache"
+				value="true" />
+			<property name="hibernate.cache.use_query_cache"
+				value="true" />
+			<property
+				name="hibernate.javax.cache.missing_cache_strategy" value="create" />
+			<property name="hibernate.cache.keys_factory"
+				value="default" />
+			<property name="hibernate.cache.region.factory_class"
+				value="jcache" />
+			<property name="hibernate.javax.cache.provider"
+				value="org.ehcache.jsr107.EhcacheCachingProvider" />
+			<property name="hibernate.javax.cache.uri"
+				value="ehcache.xml" />
+		</properties>
+	</persistence-unit>
+</persistence>
