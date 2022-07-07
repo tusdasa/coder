@@ -65,7 +65,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
-			<version>5.1.4.RELEASE</version>
+			<version>5.2.21.RELEASE</version>
 		</dependency>
 		<!-- my sql-connector-java -->
 		<dependency>
